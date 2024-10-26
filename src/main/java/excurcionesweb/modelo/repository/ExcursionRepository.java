@@ -15,7 +15,7 @@ public interface ExcursionRepository extends JpaRepository<Excursion, Integer>{
 	public List<Excursion> findByDestacados();
 	@Query("select e from Excursion e where e.estado = 'CREADO'")
 	public List<Excursion> findByCreados();
-	@Query("select e from Excursion e where e.estado = 'CREADO'")
+	@Query("select e from Excursion e where e.estado = 'CANCELADO'")
 	public List<Excursion> findByCancelados();
 	@Query("select e from Excursion e where e.estado = 'TERMINADO'")
 	public List<Excursion> findByTerminados();
