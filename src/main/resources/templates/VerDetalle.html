@@ -13,13 +13,19 @@
 
 		<div class="card" style="width: 22rem;">
 	  		<div class="card-header">
-	  			<h3>Detalle del Producto</h3>
+	  			<h3>Detalle de la Excursion</h3>
 	  		</div>
 	  		<ul class="list-group list-group-flush grid text-center">
-	    		<li th:text="${producto.idProducto}" class="list-group-item"></li>
-	    		<li th:text="${producto.descripcion}" class="list-group-item"></li>
-	    		<li th:text="${producto.precio}" class="list-group-item"></li>
-	    		<li th:text="${producto.stock}" class="list-group-item"></li>
+	    		<li th:text="${excorsion.idExcursion}" class="list-group-item"></li>
+	    		<li th:text="${excorsion.descripcion}" class="list-group-item"></li>
+	    		<li th:text="${excorsion.origen}" class="list-group-item"></li>
+	    		<li th:text="${excorsion.destino}" class="list-group-item"></li>
+	    		<li th:text="${excorsion.precio}" class="list-group-item"></li>
+	    		<li th:text="${excorsion.precio}" class="list-group-item"></li>
+	    		<li th:text="${excorsion.precio}" class="list-group-item"></li>
+	    		<li th:text="${excorsion.precio}" class="list-group-item"></li>
+	    		<li th:text="${excorsion.precio}" class="list-group-item"></li>
+	    		<li th:text="${excorsion.stock}" class="list-group-item"></li>
 	    		<li th:text="${#dates.format(producto.fechaAlta, 'dd-MM-yyyy')}" class="list-group-item"></li>
 	    		<li class="grid text-center list-group-item">
 	    			<button type="button" class="btn btn-danger" ><a th:href="@{/}" style="text-decoration:none; color:white">Cancelar</a></button></a>
