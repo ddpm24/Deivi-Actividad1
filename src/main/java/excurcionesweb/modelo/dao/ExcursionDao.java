@@ -10,6 +10,8 @@ public interface ExcursionDao {
 	List<Excursion> findAll();
 	int insertOne(Excursion excursion);
 	int updateOne(Excursion excursion);
+	int deleteOne(Excursion excursion);
+	int deleteOne(int idExcursion);
 	List<Excursion> findByCreados();
 	List<Excursion> findByCancelados();
 	List<Excursion> findByDestacados();
