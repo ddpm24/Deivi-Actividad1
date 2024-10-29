@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import excurcionesweb.modelo.dao.ExcursionDao;
 import excurcionesweb.modelo.entities.Excursion;
@@ -42,5 +44,21 @@ public class ExcursionController {
 		}
 		
 		return "forward:/";
+	}
+	
+	@GetMapping("/alta")
+	public String alta() {
+		return "FormAltaExcursion";
+	}
+	
+	@PostMapping("/alta")
+	public String procAlta(Excursion excursion, RedirectAttributes ratt) {
+		
+		if (edao.insertOne(excursion) == 1)
+			ratt.addFlashAttribute("mensaje", "Excursión insertada correctamente.");
+		else
+			ratt.addFlashAttribute("mensaje", "Excursión NO insertada.");
+		
+		return "redirect:/";
 	}
 }
