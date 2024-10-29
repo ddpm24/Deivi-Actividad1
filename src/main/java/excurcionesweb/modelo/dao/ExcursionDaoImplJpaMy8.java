@@ -33,6 +33,26 @@ public class ExcursionDaoImplJpaMy8 implements ExcursionDao {
 	}
 
 	@Override
+	public int deleteOne(Excursion excursion) {
+		// TODO Auto-generated method stub
+		if (erepo.existsById(excursion.getIdExcursion())) {
+			erepo.delete(excursion);
+			return 1;
+		}
+		return 0;	
+	}
+	
+	@Override
+	public int deleteOne(int idExcursion) {
+		if (erepo.existsById(idExcursion)) {
+			erepo.deleteById(idExcursion);
+			return 1;
+		}
+		return 0;
+	}
+
+	
+	@Override
 	public int updateOne(Excursion excursion) {
 		// TODO Auto-generated method stub
 		if (erepo.existsById(excursion.getIdExcursion())) {
@@ -65,5 +85,8 @@ public class ExcursionDaoImplJpaMy8 implements ExcursionDao {
 		// TODO Auto-generated method stub
 		return erepo.findByTerminados();
 	}
+
+	
+	
 
 }
