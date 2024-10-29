@@ -31,4 +31,16 @@ public class ExcursionController {
 		}
 		
 	}
+	
+	@GetMapping("/eliminar/{idExcursion}")
+	public String eliminar(@PathVariable int idExcursion, Model model) {
+		
+		if (edao.deleteOne(idExcursion)==1) {
+			model.addAttribute("mensaje","Producto Eliminado");
+		} else {
+			model.addAttribute("mensaje","Producto NO Eliminado");
+		}
+		
+		return "forward:/";
+	}
 }
