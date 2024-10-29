@@ -16,17 +16,18 @@
 	  			<h3>Detalle de la Excursion</h3>
 	  		</div>
 	  		<ul class="list-group list-group-flush grid text-center">
-	    		<li th:text="${excorsion.idExcursion}" class="list-group-item"></li>
-	    		<li th:text="${excorsion.descripcion}" class="list-group-item"></li>
-	    		<li th:text="${excorsion.origen}" class="list-group-item"></li>
-	    		<li th:text="${excorsion.destino}" class="list-group-item"></li>
-	    		<li th:text="${excorsion.precio}" class="list-group-item"></li>
-	    		<li th:text="${excorsion.precio}" class="list-group-item"></li>
-	    		<li th:text="${excorsion.precio}" class="list-group-item"></li>
-	    		<li th:text="${excorsion.precio}" class="list-group-item"></li>
-	    		<li th:text="${excorsion.precio}" class="list-group-item"></li>
-	    		<li th:text="${excorsion.stock}" class="list-group-item"></li>
-	    		<li th:text="${#dates.format(producto.fechaAlta, 'dd-MM-yyyy')}" class="list-group-item"></li>
+	    		<li th:text="${excursion.idExcursion}" class="list-group-item"></li>
+	    		<li th:text="${excursion.descripcion}" class="list-group-item"></li>
+	    		<li th:text="${excursion.origen}" class="list-group-item"></li>
+	    		<li th:text="${excursion.destino}" class="list-group-item"></li>
+	    		<li th:text="${#dates.format(excursion.fechaExcursion, 'dd-MM-yyyy')}" class="list-group-item"></li>
+	    		<li th:text="${excursion.duracion}" class="list-group-item"></li>
+	    		<li th:text="${excursion.estado}" class="list-group-item"></li>
+	    		<li th:text="${excursion.aforoMaximo}" class="list-group-item"></li>
+	    		<li th:text="${excursion.minimoAsistentes}" class="list-group-item"></li>
+	    		<li th:text="${excursion.precioUnitario}" class="list-group-item"></li>
+	    		<li th:text="${excursion.imagen}" class="list-group-item"></li>
+	    		<li th:text="${#dates.format(excursion.fechaExcursion, 'dd-MM-yyyy')}" class="list-group-item"></li>
 	    		<li class="grid text-center list-group-item">
 	    			<button type="button" class="btn btn-danger" ><a th:href="@{/}" style="text-decoration:none; color:white">Cancelar</a></button></a>
 	    		</li>

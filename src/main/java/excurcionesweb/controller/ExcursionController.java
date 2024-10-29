@@ -11,13 +11,13 @@ import excurcionesweb.modelo.dao.ExcursionDao;
 import excurcionesweb.modelo.entities.Excursion;
 
 @Controller
-@RequestMapping("/excursiones")
+@RequestMapping("/excursion")
 public class ExcursionController {
 
 	@Autowired
 	private ExcursionDao edao;
 	
-	@GetMapping("/detalle/{idProducto}")
+	@GetMapping("/detalle/{idExcursion}")
 	public String verDetalle(Model model, @PathVariable int idExcursion) {
 		
 		Excursion excursion = edao.findById(idExcursion);
