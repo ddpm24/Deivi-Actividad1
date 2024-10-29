@@ -3,6 +3,8 @@ package excurcionesweb.modelo.entities;
 import java.util.Date;
 import java.util.Objects;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -23,6 +25,7 @@ public class Excursion {
 	private String destino;
 	@Column(name="fecha_excursion")
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaExcursion;
 	private int duracion;
 	private String estado;
@@ -36,6 +39,7 @@ public class Excursion {
 	private String imagen;
 	@Column(name="fecha_alta")
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaAlta;
 	
 	
