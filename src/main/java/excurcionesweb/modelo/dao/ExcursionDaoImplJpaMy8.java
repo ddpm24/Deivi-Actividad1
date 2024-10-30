@@ -51,6 +51,16 @@ public class ExcursionDaoImplJpaMy8 implements ExcursionDao {
 		return 0;
 	}
 
+	@Override
+	public int cancelOne(int idExcursion) {
+		if (erepo.existsById(idExcursion)) {
+			Excursion excursion = erepo.findById(Integer.valueOf(idExcursion)).orElse(null);
+			excursion.setEstado("CANCELADO");
+			erepo.save(excursion);
+			return 1;
+		}
+		return 0;
+	}
 	
 	@Override
 	public int updateOne(Excursion excursion) {
@@ -85,6 +95,8 @@ public class ExcursionDaoImplJpaMy8 implements ExcursionDao {
 		// TODO Auto-generated method stub
 		return erepo.findByTerminados();
 	}
+
+	
 
 	
 	
