@@ -61,4 +61,31 @@ public class ExcursionController {
 		
 		return "redirect:/";
 	}
+	
+	@GetMapping("/editar/{idExcursion}")
+	public String mostrarFormEditar(Model model, @PathVariable int idExcursion) {
+		
+		Excursion excursion = edao.findById(idExcursion);
+		
+		if (excursion == null) {
+			model.addAttribute("mensaje", "Excursion no existe");
+			return "forward:/";
+		}
+		
+		model.addAttribute("excursion", excursion);
+		return "FormEditarExcursion";
+	}
+	
+	@PostMapping("/editar/{idExcursion}")
+	public String procFormEditar(Excursion excursion, @PathVariable int idExcursion, RedirectAttributes ratt) {
+		
+		excursion.setIdExcursion(idExcursion);
+		if (edao.updateOne(excursion) == 1)
+			ratt.addFlashAttribute("mensaje", "Excursion editada.");
+		else
+			ratt.addFlashAttribute("mensaje", "Excursion NO editada.");
+		
+		
+		return "redirect:/";
+	}
 }
