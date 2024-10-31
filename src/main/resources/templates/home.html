@@ -19,8 +19,10 @@
 
 <div class="d-flex justify-content-start" style="margin:10px">
     <button type="button" class="btn btn-secondary"><a th:href="@{/excursion/destacados}" style="text-decoration:none; color:white">Destacados</a></button>
-    <button type="button" class="btn btn-secondary" style="margin-left: 10px;"><a th:href="@{/excursion/creados}" style="text-decoration:none; color:white">Creados</a></button>
-    <button type="button" class="btn btn-secondary" style="margin-left: 10px;"><a th:href="@{/excursion/terminados}" style="text-decoration:none; color:white">Terminados</a></button>
+    <button type="button" class="btn btn-secondary" style="margin-left: 10px;"><a th:href="@{/excursion/findEstado/{estado}(estado='CREADO')}" style="text-decoration:none; color:white">Creados</a></button>
+    <button type="button" class="btn btn-secondary" style="margin-left: 10px;"><a th:href="@{/excursion/findEstado/{estado}(estado='TERMINADO')}" style="text-decoration:none; color:white">Terminados</a></button>
+
+
 </div>
 
 <div class="d-flex justify-content-end" style="margin:10px">

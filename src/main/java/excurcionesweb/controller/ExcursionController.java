@@ -138,6 +138,26 @@ public class ExcursionController {
 	}
 	
 	
+	@GetMapping("/findEstado/{estado}")
+	public String mostrarFormEditar(Model model, @PathVariable String estado) {
+		System.out.println(estado);
+		List<Excursion> excursiones = edao.findByEstado(estado);
+		System.out.println(excursiones);
+		
+		if (excursiones != null) {
+			model.addAttribute("excursiones", excursiones);
+			return "TabEstados";
+		} else {
+			model.addAttribute("mensaje", "no existen excursiones en este estado.");
+			return "forward:/";
+			
+			
+			
+			
+			
+		}
+		
+	}
 	
 	
 	
