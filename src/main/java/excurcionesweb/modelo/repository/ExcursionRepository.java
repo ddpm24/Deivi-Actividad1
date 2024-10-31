@@ -19,5 +19,7 @@ public interface ExcursionRepository extends JpaRepository<Excursion, Integer>{
 	public List<Excursion> findByCancelados();
 	@Query("select e from Excursion e where e.estado = 'TERMINADO'")
 	public List<Excursion> findByTerminados();
+	@Query("select e from Excursion e where e.estado = ?1")
+	public List<Excursion> findByEstado(String estado);
 	
 }

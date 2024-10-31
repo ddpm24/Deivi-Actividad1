@@ -18,6 +18,8 @@ public interface ExcursionDao {
 	List<Excursion> findByDestacados();
 	List<Excursion> findByTerminados();
 	
+	List<Excursion> findByEstado(String estado);
+	
 	
 	
 }

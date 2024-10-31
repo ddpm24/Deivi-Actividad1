@@ -96,6 +96,12 @@ public class ExcursionDaoImplJpaMy8 implements ExcursionDao {
 		return erepo.findByTerminados();
 	}
 
+	@Override
+	public List<Excursion> findByEstado(String estado) {
+		// TODO Auto-generated method stub
+		return erepo.findByEstado(estado);
+	}
+
 	
 
 	
