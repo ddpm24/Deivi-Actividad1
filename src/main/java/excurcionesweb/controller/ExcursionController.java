@@ -1,5 +1,7 @@
 package excurcionesweb.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -88,4 +90,55 @@ public class ExcursionController {
 		
 		return "redirect:/";
 	}
+
+	
+	@GetMapping("/creados")
+	public String creados(Model model) {
+		
+		List<Excursion> excursiones = edao.findByCreados();
+		
+		if (excursiones != null) {
+			model.addAttribute("excursiones", excursiones);
+			return "TabCreados";
+		} else {
+			model.addAttribute("mensaje", "no existen excursiones en este estado.");
+			return "forward:/";
+		}
+		
+	}
+	
+	@GetMapping("/destacados")
+	public String destacados(Model model) {
+		
+		List<Excursion> excursiones = edao.findByDestacados();
+		
+		if (excursiones != null) {
+			model.addAttribute("excursiones", excursiones);
+			return "TabCreados";
+		} else {
+			model.addAttribute("mensaje", "no existen excursiones en este estado.");
+			return "forward:/";
+		}
+		
+	}
+	
+	@GetMapping("/terminados")
+	public String terminados(Model model) {
+		
+		List<Excursion> excursiones = edao.findByTerminados();
+		
+		if (excursiones != null) {
+			model.addAttribute("excursiones", excursiones);
+			return "TabCreados";
+		} else {
+			model.addAttribute("mensaje", "no existen excursiones en este estado.");
+			return "forward:/";
+		}
+		
+	}
+	
+	
+	
+	
+	
 }
