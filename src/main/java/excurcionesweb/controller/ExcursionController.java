@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import excurcionesweb.modelo.dao.ExcursionDao;
@@ -95,10 +96,10 @@ public class ExcursionController {
 	@GetMapping("/creados")
 	public String creados(Model model) {
 		
-		List<Excursion> excursiones = edao.findByCreados();
+		List<Excursion> excursion = edao.findByCreados();
 		
-		if (excursiones != null) {
-			model.addAttribute("excursiones", excursiones);
+		if (excursion != null) {
+			model.addAttribute("excursiones", excursion);
 			return "TabCreados";
 		} else {
 			model.addAttribute("mensaje", "no existen excursiones en este estado.");
@@ -110,14 +111,15 @@ public class ExcursionController {
 	@GetMapping("/destacados")
 	public String destacados(Model model) {
 		
-		List<Excursion> excursiones = edao.findByDestacados();
+		List<Excursion> excursion = edao.findByDestacados();
 		
-		if (excursiones != null) {
-			model.addAttribute("excursiones", excursiones);
-			return "TabCreados";
+		if (excursion != null) {
+			model.addAttribute("excursion", excursion);
+			model.addAttribute("mensaje", "Excursiones destacadas.");
+			return "home";
 		} else {
 			model.addAttribute("mensaje", "no existen excursiones en este estado.");
-			return "forward:/";
+			return "home";
 		}
 		
 	}
@@ -141,24 +143,39 @@ public class ExcursionController {
 	@GetMapping("/findEstado/{estado}")
 	public String mostrarFormEditar(Model model, @PathVariable String estado) {
 		System.out.println(estado);
-		List<Excursion> excursiones = edao.findByEstado(estado);
-		System.out.println(excursiones);
+		List<Excursion> excursion = edao.findByEstado(estado);
+		System.out.println(excursion);
 		
-		if (excursiones != null) {
-			model.addAttribute("excursiones", excursiones);
-			return "TabEstados";
+		if (excursion != null) {
+			model.addAttribute("excursion", excursion);
+			model.addAttribute("mensaje", "Excursiones en el estado "+estado+".");
+			return "home";
 		} else {
 			model.addAttribute("mensaje", "no existen excursiones en este estado.");
 			return "forward:/";
-			
-			
-			
-			
-			
 		}
 		
 	}
 	
+	
+	@PostMapping("/filtrarPorPrecio")
+	public String procBuscarPorPrecio(@RequestParam("precioMin") double precioMin, 
+	                                  @RequestParam("precioMax") double precioMax, 
+	                                  Model model) {
+		
+	    List<Excursion> excursionesFiltradas = edao.buscarPorRangoPrecios(precioMin, precioMax);
+
+	    
+	    if (excursionesFiltradas != null && !excursionesFiltradas.isEmpty()) {
+	        model.addAttribute("mensaje", "Excurciones con el precio entre "+ precioMin +" y "+precioMax+".");
+	    } else {
+	        model.addAttribute("mensaje", "No existen excursiones en ese rango.");
+	    }
+
+	    model.addAttribute("excursionesFiltradas", excursionesFiltradas);
+
+	    return "home";  
+	}
 	
 	
 }
