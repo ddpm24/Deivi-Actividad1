@@ -72,10 +72,15 @@ public class ExcursionRestController {
         return edao.findByTerminados();
     }
     
-    // Obtener excursiones terminadas
+    
     @GetMapping("/estado/{estado}")
     public List<Excursion> findByEstado(@PathVariable String estado) {
         return edao.findByEstado(estado);
+    }
+    
+    @GetMapping("/precios/{precio1}/{precio2}")
+    public List<Excursion> findByPrecios(@PathVariable double precio1,@PathVariable double precio2) {
+        return edao.buscarPorRangoPrecios(precio1, precio2);
     }
 	
 	

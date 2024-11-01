@@ -102,6 +102,14 @@ public class ExcursionDaoImplJpaMy8 implements ExcursionDao {
 		return erepo.findByEstado(estado);
 	}
 
+	@Override
+	public List<Excursion> buscarPorRangoPrecios(double precio1, double precio2) {
+		// TODO Auto-generated method stub
+		return erepo.findByPrecioUnitarioGreaterThanEqualAndPrecioUnitarioLessThanEqual(precio1, precio2);
+	}
+
+	
+	
 	
 
 	

@@ -20,6 +20,8 @@ public interface ExcursionDao {
 	
 	List<Excursion> findByEstado(String estado);
 	
+	List<Excursion> buscarPorRangoPrecios(double precio1, double precio2);
+	
 	
 	
 }

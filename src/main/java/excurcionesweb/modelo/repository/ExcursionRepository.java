@@ -22,4 +22,6 @@ public interface ExcursionRepository extends JpaRepository<Excursion, Integer>{
 	@Query("select e from Excursion e where e.estado = ?1")
 	public List<Excursion> findByEstado(String estado);
 	
+	public List<Excursion> findByPrecioUnitarioGreaterThanEqualAndPrecioUnitarioLessThanEqual(double precio1, double precio2);
+	
 }
