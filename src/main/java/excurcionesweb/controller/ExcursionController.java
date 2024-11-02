@@ -23,6 +23,8 @@ public class ExcursionController {
 	@Autowired
 	private ExcursionDao edao;
 	
+	
+	
 	@GetMapping("/detalle/{idExcursion}")
 	public String verDetalle(Model model, @PathVariable int idExcursion) {
 		
@@ -59,9 +61,9 @@ public class ExcursionController {
 	public String procAlta(Excursion excursion, RedirectAttributes ratt) {
 		 excursion.setFechaAlta(new Date());
 		if (edao.insertOne(excursion) == 1)
-			ratt.addFlashAttribute("mensaje", "Excursión insertada correctamente.");
+			ratt.addFlashAttribute("mensaje", "Excursión insertada correctamente");
 		else
-			ratt.addFlashAttribute("mensaje", "Excursión NO insertada.");
+			ratt.addFlashAttribute("mensaje", "Excursión NO insertada");
 		
 		return "redirect:/";
 	}
@@ -85,29 +87,14 @@ public class ExcursionController {
 		
 		excursion.setIdExcursion(idExcursion);
 		if (edao.updateOne(excursion) == 1)
-			ratt.addFlashAttribute("mensaje", "Excursion editada.");
+			ratt.addFlashAttribute("mensaje", "Excursion editada");
 		else
-			ratt.addFlashAttribute("mensaje", "Excursion NO editada.");
+			ratt.addFlashAttribute("mensaje", "Excursion NO editada");
 		
 		
 		return "redirect:/";
 	}
 
-	
-	@GetMapping("/creados")
-	public String creados(Model model) {
-		
-		List<Excursion> excursion = edao.findByCreados();
-		
-		if (excursion != null) {
-			model.addAttribute("excursiones", excursion);
-			return "TabCreados";
-		} else {
-			model.addAttribute("mensaje", "no existen excursiones en este estado.");
-			return "forward:/";
-		}
-		
-	}
 	
 	@GetMapping("/destacados")
 	public String destacados(Model model) {
@@ -116,29 +103,15 @@ public class ExcursionController {
 		
 		if (excursion != null) {
 			model.addAttribute("excursion", excursion);
-			model.addAttribute("mensaje", "Excursiones destacadas.");
+			model.addAttribute("mensaje", "Excursiones destacadas");
 			return "home";
 		} else {
-			model.addAttribute("mensaje", "no existen excursiones en este estado.");
+			model.addAttribute("mensaje", "No existen excursiones en este estado");
 			return "home";
 		}
 		
 	}
 	
-	@GetMapping("/terminados")
-	public String terminados(Model model) {
-		
-		List<Excursion> excursiones = edao.findByTerminados();
-		
-		if (excursiones != null) {
-			model.addAttribute("excursiones", excursiones);
-			return "TabCreados";
-		} else {
-			model.addAttribute("mensaje", "no existen excursiones en este estado.");
-			return "forward:/";
-		}
-		
-	}
 	
 	
 	@GetMapping("/findEstado/{estado}")
@@ -149,10 +122,10 @@ public class ExcursionController {
 		
 		if (excursion != null) {
 			model.addAttribute("excursion", excursion);
-			model.addAttribute("mensaje", "Excursiones en el estado "+estado+".");
+			model.addAttribute("mensaje", "Excursiones en el estado "+estado);
 			return "home";
 		} else {
-			model.addAttribute("mensaje", "no existen excursiones en este estado.");
+			model.addAttribute("mensaje", "No existen excursiones en este estado");
 			return "forward:/";
 		}
 		
@@ -160,17 +133,17 @@ public class ExcursionController {
 	
 	
 	@PostMapping("/filtrarPorPrecio")
-	public String procBuscarPorPrecio(@RequestParam("precioMin") double precioMin, 
-	                                  @RequestParam("precioMax") double precioMax, 
+	public String procBuscarPorPrecio(@RequestParam double precioMin, 
+	                                  @RequestParam double precioMax, 
 	                                  Model model) {
 		
 	    List<Excursion> excursionesFiltradas = edao.buscarPorRangoPrecios(precioMin, precioMax);
 
 	    
 	    if (excursionesFiltradas != null && !excursionesFiltradas.isEmpty()) {
-	        model.addAttribute("mensaje", "Excurciones con el precio entre "+ precioMin +" y "+precioMax+".");
+	        model.addAttribute("mensaje", "Excurciones con el precio entre "+ precioMin +" y "+precioMax);
 	    } else {
-	        model.addAttribute("mensaje", "No existen excursiones en ese rango.");
+	        model.addAttribute("mensaje", "No existen excursiones en ese rango");
 	    }
 
 	    model.addAttribute("excursionesFiltradas", excursionesFiltradas);
@@ -178,5 +151,12 @@ public class ExcursionController {
 	    return "home";  
 	}
 	
+	
+	@GetMapping("/filtrar")
+	public String home(Model model) {
+		List<Excursion> lista = edao.findAll();  
+		
+		return "home";
+	}
 	
 }

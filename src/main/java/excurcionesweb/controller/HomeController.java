@@ -20,9 +20,12 @@ public class HomeController {
 	@GetMapping("/")
 	public String home(Model model) {
 		List<Excursion> lista = excurcionDao.findAll();  
-		
-		model.addAttribute("excursion", excurcionDao.findAll());
-		
+		if (lista == null)
+			model.addAttribute("mensaje", "No existen excurciones");
+		else {
+			model.addAttribute("excursion", excurcionDao.findAll());
+			model.addAttribute("mensaje", "Todas las excurciones existentes");
+		}
 		return "home";
 	}
 	

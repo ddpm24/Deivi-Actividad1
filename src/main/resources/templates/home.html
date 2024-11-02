@@ -6,6 +6,10 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+   	<!-- Bootstrap Icons -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+   
+   
     <style>
         body {
             background-color: #f8f9fa; /* Fondo claro para un aspecto moderno */
@@ -69,48 +73,76 @@
             </button>
         </div>
 
-        <!-- Tabla de excursiones -->
-        <table class="table table-sm table-hover table-striped text-center">
-            <thead>
-                <tr>
-                    <th>Descripción</th>
-                    <th>Origen</th>
-                    <th>Destino</th>
-                    <th>Fecha</th>
-                    <th>Precio</th>
-                    <th>Estado</th>
-                    <th>Detalle</th>
-                    <th>Cancelar</th>
-                    <th>Modificar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="ele : ${excursionesFiltradas != null ? excursionesFiltradas : excursion}">
-                    <td th:text="${ele.descripcion}"></td>
-                    <td th:text="${ele.origen}"></td>
-                    <td th:text="${ele.destino}"></td>
-                    <td th:text="${ele.fechaExcursion}"></td>
-                    <td th:text="${ele.precioUnitario}"></td>
-                    <td th:text="${ele.estado}"></td>
-                    <td>
-                        <a th:href="@{/excursion/detalle/{idExcursion}(idExcursion=${ele.idExcursion})}">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="18" width="19.75" viewBox="0 0 576 512"></svg>
-                        </a>
-                    </td>
-                    <td>
-                        <a th:href="@{/excursion/eliminar/{idExcursion}(idExcursion=${ele.idExcursion})}">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="17" width="15.75" viewBox="0 0 448 512"></svg>
-                        </a>
-                    </td>
-                    <td>
-                        <a th:href="@{/excursion/editar/{idExcursion}(idExcursion=${ele.idExcursion})}">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 512 512"></svg>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+       <!-- Tabla de excursiones -->
+		<table class="table table-sm table-hover table-striped text-center">
+		    <thead>
+		        <tr>
+		            <th>Descripción</th>
+		            <th>Origen</th>
+		            <th>Destino</th>
+		            <th>Fecha</th>
+		            <th>
+		                <!-- Botón de ordenamiento para Precio con estilo ajustado -->
+		                <button id="sortPriceBtn" class="btn btn-link text-decoration-none d-flex align-items-center justify-content-center" onclick="sortTable()" style="color: black; font-weight: bold;">
+		                    Precio
+		                    <i id="sortIcon" class="bi bi-arrow-down-up ms-2" style="color: inherit;"></i>
+		                </button>
+		            </th>
+		            <th>Estado</th>
+		            <th>Detalle</th>
+		            <th>Cancelar</th>
+		            <th>Modificar</th>
+		        </tr>
+		    </thead>
+		    <tbody id="tableBody">
+		        <tr th:each="ele : ${excursionesFiltradas != null ? excursionesFiltradas : excursion}">
+		            <td th:text="${ele.descripcion}"></td>
+		            <td th:text="${ele.origen}"></td>
+		            <td th:text="${ele.destino}"></td>
+		            <td th:text="${ele.fechaExcursion}"></td>
+		            <td class="price" th:text="${ele.precioUnitario}"></td>
+		            <td th:text="${ele.estado}"></td>
+		            <td>
+		                <a th:href="@{/excursion/detalle/{idExcursion}(idExcursion=${ele.idExcursion})}">
+		                    <svg xmlns="http://www.w3.org/2000/svg" height="18" width="19.75" viewBox="0 0 576 512"></svg>
+		                </a>
+		            </td>
+		            <td>
+		                <a th:href="@{/excursion/eliminar/{idExcursion}(idExcursion=${ele.idExcursion})}">
+		                    <svg xmlns="http://www.w3.org/2000/svg" height="17" width="15.75" viewBox="0 0 448 512"></svg>
+		                </a>
+		            </td>
+		            <td>
+		                <a th:href="@{/excursion/editar/{idExcursion}(idExcursion=${ele.idExcursion})}">
+		                    <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 512 512"></svg>
+		                </a>
+		            </td>
+		        </tr>
+		    </tbody>
+		</table>
+
     </div>
+    
+<script>
+    let ascending = true;
+
+    function sortTable() {
+        const tableBody = document.getElementById("tableBody");
+        const rows = Array.from(tableBody.rows);
+        const icon = document.getElementById("sortIcon");
+
+        rows.sort((a, b) => {
+            const priceA = parseFloat(a.querySelector(".price").textContent) || 0;
+            const priceB = parseFloat(b.querySelector(".price").textContent) || 0;
+            return ascending ? priceA - priceB : priceB - priceA;
+        });
+
+        rows.forEach(row => tableBody.appendChild(row));
+
+        icon.className = ascending ? "bi bi-arrow-up" : "bi bi-arrow-down";
+        ascending = !ascending;
+    }
+</script>
 
 </body>
 </html>
