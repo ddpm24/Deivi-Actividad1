@@ -57,7 +57,7 @@
                <label for="aforoMaximo" class="form-label">Aforo máximo</label>
                <input type="number" name="aforoMaximo" th:value="${excursion.aforoMaximo}" class="form-control" id="aforoMaximo" placeholder="Introduce el aforo máximo" min="1" required>
            </div>
-           <div class="mb-3">
+           <div class="mb-3" >
                <label for="minimoAsistentes" class="form-label">Mínimo asistentes</label>
                <input type="number" name="minimoAsistentes" th:value="${excursion.minimoAsistentes}" class="form-control" id="minimoAsistentes" placeholder="Introduce el mínimo de asistentes" min="1" required>
            </div>
@@ -68,10 +68,6 @@
            <div class="mb-3">
                <label for="imagen" class="form-label">Imagen</label>
                <input type="text" name="imagen" th:value="${excursion.imagen}" class="form-control" id="imagen" placeholder="Introduce la URL de la imagen" required>
-           </div>
-           <div class="mb-3">
-               <label for="fechaAlta" class="form-label">Fecha de alta</label>
-               <input type="date" name="fechaAlta" th:value="${excursion.fechaAlta}" class="form-control" id="fechaAlta" required>
            </div>		
 
 

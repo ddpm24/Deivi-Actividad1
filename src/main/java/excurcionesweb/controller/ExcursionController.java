@@ -1,5 +1,6 @@
 package excurcionesweb.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,7 @@ public class ExcursionController {
 	
 	@PostMapping("/alta")
 	public String procAlta(Excursion excursion, RedirectAttributes ratt) {
-		
+		 excursion.setFechaAlta(new Date());
 		if (edao.insertOne(excursion) == 1)
 			ratt.addFlashAttribute("mensaje", "Excursión insertada correctamente.");
 		else
