@@ -46,4 +46,14 @@ INSERT INTO excursion (
 (22, 'Recorrido por cuevas de hielo', 'Granada', 'Sierra Nevada', '2025-01-08', 4, 'CREADO', 'N', 15, 5, 90.00, 'hielo.jpg', '2024-11-01'),
 (23, 'Tour gastronómico', 'Valencia', 'Mercado Central', '2024-12-22', 3, 'CREADO', 'S', 30, 10, 25.50, 'gastronomia.jpg', '2024-10-28'),
 (24, 'Avistamiento de aves', 'Doñana', 'Parque Nacional de Doñana', '2025-02-12', 4, 'CREADO', 'N', 20, 8, 32.00, 'aves.jpg', '2024-11-02'),
-(25, 'Excursión en tren histórico', 'Madrid', 'Aranjuez', '2024-11-10', 5, 'TERMINADO', 'S', 40, 12, 28.00, 'tren.jpg', '2024-10-05');
+(25, 'Excursión en tren histórico', 'Madrid', 'Aranjuez', '2024-11-10', 5, 'TERMINADO', 'S', 40, 12, 28.00, 'tren.jpg', '2024-10-05'),
+(26, 'Tour en la ciudad medieval', 'Ávila', 'Casco histórico de Ávila', '2025-01-30', 4, 'CREADO', 'S', 40, 15, 25.00, 'avila.jpg', '2024-11-01'),
+(27, 'Visita al volcán', 'Lanzarote', 'Parque Nacional de Timanfaya', '2025-02-25', 6, 'CREADO', 'N', 30, 10, 55.50, 'volcan.jpg', '2024-11-03'),
+(28, 'Excursión a un bosque encantado', 'Madrid', 'Hayedo de Montejo', '2025-03-10', 5, 'CREADO', 'S', 20, 6, 18.75, 'bosque.jpg', '2024-11-04'),
+(29, 'Paseo en catamarán', 'Ibiza', 'Islas de Ibiza', '2025-04-05', 4, 'CREADO', 'N', 50, 15, 60.00, 'catamaran.jpg', '2024-11-02'),
+(30, 'Exploración arqueológica', 'Mérida', 'Ruinas Romanas de Mérida', '2025-05-18', 5, 'CREADO', 'S', 30, 8, 45.00, 'ruinas.jpg', '2024-11-05'),
+(31, 'Ruta por acantilados', 'Asturias', 'Acantilados de la costa asturiana', '2025-05-25', 6, 'CREADO', 'N', 25, 10, 33.00, 'acantilados.jpg', '2024-11-06'),
+(32, 'Visita a un castillo templario', 'León', 'Castillo de Ponferrada', '2025-06-10', 4, 'CREADO', 'S', 40, 12, 27.50, 'ponferrada.jpg', '2024-11-07'),
+(33, 'Tour por molinos de viento', 'Toledo', 'Consuegra', '2025-07-01', 3, 'CREADO', 'N', 35, 8, 20.00, 'molinos.jpg', '2024-11-08'),
+(34, 'Excursión de espeleología', 'Cantabria', 'Cueva del Soplao', '2025-08-12', 5, 'CREADO', 'S', 15, 5, 50.00, 'espeleologia.jpg', '2024-11-09'),
+(35, 'Caminata nocturna', 'Granada', 'Parque Nacional de Sierra Nevada', '2025-08-20', 5, 'CREADO', 'N', 25, 10, 22.00, 'caminata.jpg', '2024-11-10');
