@@ -1,44 +1,74 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeLeaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Listado de productos</title>
-</head>
-<!-- Bootstrap CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de la Excursión</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .list-group-item {
+            border: none;
+            text-align: left;
+        }
+        .list-group-item .field-label {
+            font-weight: bold;
+        }
+        .btn-danger {
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-danger:hover {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
 <body>
 
-<div class="d-flex position-absolute top-50 start-50 translate-middle gird text-center">
-
-		<div class="card" style="width: 22rem;">
-	  		<div class="card-header">
-	  			<h3>Detalle de la Excursion</h3>
-	  		</div>
-	  		<ul class="list-group list-group-flush grid text-center">
-	    		<li th:text="${excursion.idExcursion}" class="list-group-item"></li>
-	    		<li th:text="${excursion.descripcion}" class="list-group-item"></li>
-	    		<li th:text="${excursion.origen}" class="list-group-item"></li>
-	    		<li th:text="${excursion.destino}" class="list-group-item"></li>
-	    		<li th:text="${#dates.format(excursion.fechaExcursion, 'dd-MM-yyyy')}" class="list-group-item"></li>
-	    		<li th:text="${excursion.duracion}" class="list-group-item"></li>
-	    		<li th:text="${excursion.estado}" class="list-group-item"></li>
-	    		<li th:text="${excursion.destacado}" class="list-group-item"></li>
-	    		<li th:text="${excursion.aforoMaximo}" class="list-group-item"></li>
-	    		<li th:text="${excursion.minimoAsistentes}" class="list-group-item"></li>
-	    		<li th:text="${excursion.precioUnitario}" class="list-group-item"></li>
-	    		<li th:text="${excursion.imagen}" class="list-group-item"></li>
-	    		<li th:text="${#dates.format(excursion.fechaExcursion, 'dd-MM-yyyy')}" class="list-group-item"></li>
-	    		<li class="grid text-center list-group-item">
-	    			<button type="button" class="btn btn-danger" ><a th:href="@{/}" style="text-decoration:none; color:white">Cancelar</a></button></a>
-	    		</li>
-	  		</ul>
-		</div>
-		
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card" style="width: 22rem;">
+        <div class="card-header text-center">
+            <h3 class="mb-0">Detalle de la Excursión</h3>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><span class="field-label">ID de Excursión:</span> <span th:text="${excursion.idExcursion}"></span></li>
+            <li class="list-group-item"><span class="field-label">Descripción:</span> <span th:text="${excursion.descripcion}"></span></li>
+            <li class="list-group-item"><span class="field-label">Origen:</span> <span th:text="${excursion.origen}"></span></li>
+            <li class="list-group-item"><span class="field-label">Destino:</span> <span th:text="${excursion.destino}"></span></li>
+            <li class="list-group-item"><span class="field-label">Fecha de Excursión:</span> <span th:text="${#dates.format(excursion.fechaExcursion, 'dd-MM-yyyy')}"></span></li>
+            <li class="list-group-item"><span class="field-label">Duración:</span> <span th:text="${excursion.duracion}"></span></li>
+            <li class="list-group-item"><span class="field-label">Estado:</span> <span th:text="${excursion.estado}"></span></li>
+            <li class="list-group-item"><span class="field-label">Destacado:</span> <span th:text="${excursion.destacado}"></span></li>
+            <li class="list-group-item"><span class="field-label">Aforo Máximo:</span> <span th:text="${excursion.aforoMaximo}"></span></li>
+            <li class="list-group-item"><span class="field-label">Mínimo de Asistentes:</span> <span th:text="${excursion.minimoAsistentes}"></span></li>
+            <li class="list-group-item"><span class="field-label">Precio Unitario:</span> <span th:text="${excursion.precioUnitario}"></span></li>
+            <li class="list-group-item"><span class="field-label">Imagen:</span> <span th:text="${excursion.imagen}"></span></li>
+            <li class="list-group-item"><span class="field-label">Fecha de Alta:</span> <span th:text="${#dates.format(excursion.fechaAlta, 'dd-MM-yyyy')}"></span></li>
+        </ul>
+        <div class="text-center p-3">
+            <button type="button" class="btn btn-danger">
+                <a th:href="@{/}" style="text-decoration:none; color:white">Cancelar</a>
+            </button>
+        </div>
+    </div>
 </div>
-	
 
-	
-	
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybY5j9y5D+Vjj2b9ZT+upSCF0zjY5Sr7RmF0t3y6oGOTk5x1e" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-OERcA1KOb1XG0yb+WOVG5pX7kAbY1W+6TgBSC8pU68p/qez+/ZWqYZd9LVNhf+pM" crossorigin="anonymous"></script>
 </body>
 </html>
