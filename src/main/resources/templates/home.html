@@ -108,34 +108,41 @@
                 </tr>
             </thead>
             <tbody id="tableBody">
-                <tr th:each="ele : ${excursionesFiltradas != null ? excursionesFiltradas : excursion}">
-                    <td th:text="${ele.destacado}"></td>
-                    <td th:text="${ele.descripcion}"></td>
-                    <td th:text="${ele.origen}"></td>
-                    <td th:text="${ele.destino}"></td>
-                    <td th:text="${ele.fechaExcursion}"></td>
-                    <td class="price" th:text="${ele.precioUnitario}"></td>
-                    <!-- Aplica una clase de color a la columna Estado según el estado -->
-                    <td th:text="${ele.estado}" 
-    					th:classappend="${ele.estado == 'CREADO' ? 'estado-creado' : (ele.estado == 'CANCELADO' ? 'estado-cancelado' : 'estado-terminado')}">
-					</td>
-                    <td>
-                        <a th:href="@{/excursion/detalle/{idExcursion}(idExcursion=${ele.idExcursion})}">
-                            <i class="bi bi-eye" style="color: #1c31ce;"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a th:href="@{/excursion/eliminar/{idExcursion}(idExcursion=${ele.idExcursion})}">
-                            <i class="bi bi-trash" style="color: #ee2f2f;"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a th:href="@{/excursion/editar/{idExcursion}(idExcursion=${ele.idExcursion})}">
-                            <i class="bi bi-pencil" style="color: #2aa928;"></i>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
+    <tr th:each="ele : ${excursionesFiltradas != null ? excursionesFiltradas : excursion}">
+        <!-- Celda de Destacado con icono de estrella -->
+        <td>
+            <i th:if="${ele.destacado == 'S'}" class="bi bi-star-fill" style="color: #ffc107;"></i>
+            <i th:if="${ele.destacado == 'N'}" class="bi bi-star" style="color: #6c757d;"></i>
+        </td>
+        <td th:text="${ele.descripcion}"></td>
+        <td th:text="${ele.origen}"></td>
+        <td th:text="${ele.destino}"></td>
+        <td th:text="${ele.fechaExcursion}"></td>
+        <td class="price" th:text="${ele.precioUnitario}"></td>
+        
+        <!-- Estado con colores según el estado -->
+        <td th:text="${ele.estado}" 
+            th:classappend="${ele.estado == 'CREADO' ? 'estado-creado' : (ele.estado == 'CANCELADO' ? 'estado-cancelado' : 'estado-terminado')}">
+        </td>
+        
+        <!-- Detalle, Cancelar y Modificar -->
+        <td>
+            <a th:href="@{/excursion/detalle/{idExcursion}(idExcursion=${ele.idExcursion})}">
+                <i class="bi bi-eye" style="color: #1c31ce;"></i>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{/excursion/eliminar/{idExcursion}(idExcursion=${ele.idExcursion})}">
+                <i class="bi bi-trash" style="color: #ee2f2f;"></i>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{/excursion/editar/{idExcursion}(idExcursion=${ele.idExcursion})}">
+                <i class="bi bi-pencil" style="color: #2aa928;"></i>
+            </a>
+        </td>
+    </tr>
+</tbody>
         </table>
 
     </div>
