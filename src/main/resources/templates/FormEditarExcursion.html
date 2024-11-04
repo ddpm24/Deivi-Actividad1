@@ -88,9 +88,9 @@
                             <div class="col-md-6">
                                 <label for="estado" class="form-label">Estado</label>
                                 <select name="estado" th:value="${excursion.estado}" class="form-select" id="estado" required>
-                                    <option value="CREADO">CREADO</option>
-                                    <option value="TERMINADO">TERMINADO</option>
-                                    <option value="CANCELADO">CANCELADO</option>
+                                    <option th:selected="${excursion.estado == 'CREADO'}" value="CREADO">CREADO</option>
+                                    <option th:selected="${excursion.estado == 'TERMINADO'}" value="TERMINADO">TERMINADO</option>
+                                    <option th:selected="${excursion.estado == 'CANCELADO'}" value="CANCELADO">CANCELADO</option>
                                 </select>
                             </div>
                         </div>
@@ -98,8 +98,8 @@
                             <div class="col-md-6">
                                 <label for="destacado" class="form-label">Destacado</label>
                                 <select name="destacado" th:value="${excursion.destacado}" class="form-select" id="destacado" required>
-                                    <option value="N">No</option>
-                                    <option value="S">Sí</option>
+                                    <option th:selected="${excursion.destacado == 'N'}" value="N">No</option>
+                                    <option th:selected="${excursion.destacado == 'S'}" value="S">Sí</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
